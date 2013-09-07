@@ -21,6 +21,7 @@ defmodule Cepinator.Mixfile do
     [ { :cowboy, github: "extend/cowboy" },
       { :dynamo, "0.1.0-dev", github: "elixir-lang/dynamo" },
       { :ecto, github: "elixir-lang/ecto" },
-      { :pgsql, github: "ericmj/pgsql", branch: "elixir" } ]
+      { :pgsql, github: "ericmj/pgsql", branch: "elixir" },
+      { :json, github: "cblage/elixir-json"} ]
   end
 end

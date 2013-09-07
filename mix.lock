@@ -2,6 +2,7 @@
   "dynamo": {:git, "git://github.com/elixir-lang/dynamo.git", "aca53b8d47a404bba64a0a2edf8afee868f95711", []},
   "ecto": {:git, "git://github.com/elixir-lang/ecto.git", "445e2b5e4b9c781de18798e45eb5c9f2d10184a0", []},
   "hackney": {:git, "git://github.com/benoitc/hackney.git", "5b0f7eb949ebebd6fabfbc4e08a7b7231850606a", []},
+  "json": {:git, "git://github.com/cblage/elixir-json.git", "3573eb996c893d384a58ad47e83f48a82fa9d990", []},
   "mimetypes": {:git, "git://github.com/spawngrid/mimetypes.git", "47d37a977a7d633199822bf6b08353007483d00f", []},
   "pgsql": {:git, "git://github.com/ericmj/pgsql.git", "ac8c0f65098d8d5ffafa613f54945ebfa7377983", [{:branch, "elixir"}]},
   "poolboy": {:git, "git://github.com/devinus/poolboy.git", "91b68de43d49bcccf2631016febda70b20d7aa75", []},

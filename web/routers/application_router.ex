@@ -9,28 +9,20 @@ defmodule ApplicationRouter do
     conn.fetch([:cookies, :params])
   end
 
-  # It is common to break your Dynamo into many
-  # routers, forwarding the requests between them:
-  # forward "/posts", to: PostsRouter
-
-  get "/" do
-    conn = conn.assign(:title, "Welcome to Dynamo!")
-    render conn, "index.html"
-  end
-
   get "/cep/:cep" do
-    street = lookup_cep(conn.params[:cep])
-    conn.resp 200, street
+    address = conn.params[:cep] |> lookup_cep |> format_json
+    conn = conn.resp_charset("iso-8859-1")
+    conn = conn.resp_content_type("application/json")
+    conn.resp 200, address
   end
 
-  def lookup_cep(cep) do
-    query = from a in Cepinator.Address,
-      where: a.cep == ^cep,
-      select: { a.endereco, a.id_bairro }
+  defp lookup_cep(cep) do
+    Cepinator.Address.find_by_cep(cep)
+  end
 
-     [ payload | _ ] = Cepinator.Repo.all(query)
-     { street, bairro  } = payload
-     IO.puts street
-     street
+  defp format_json(address) do
+    city = address.city.get
+    { :ok, encoded } = JSON.encode street: address.endereco, city: city.cidade, uf: city.uf
+    encoded
   end
 end
