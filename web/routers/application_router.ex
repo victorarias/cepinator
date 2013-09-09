@@ -11,8 +11,7 @@ defmodule ApplicationRouter do
 
   get "/cep/:cep" do
     address = conn.params[:cep] |> lookup_cep |> format_json
-    conn = conn.resp_charset("iso-8859-1")
-    conn = conn.resp_content_type("application/json")
+    conn = conn.resp_charset("iso-8859-1").resp_content_type("application/json")
     conn.resp 200, address
   end
 
